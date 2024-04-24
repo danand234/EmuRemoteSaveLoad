@@ -1,0 +1,8 @@
+{
+  "games": [
+    { "id": 1, "game": "ExampleGame1.nes" },
+    { "id": 2, "game": "Example Game 2.nes" },
+    { "id": 3, "game": "ExampleGame(3).nes" },
+    { "id": 4, "game": "Example.Game.4.nes" }
+  ]
+}
