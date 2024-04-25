@@ -12,7 +12,15 @@ This project was designed to work with the [FCEUX](https://fceux.com/web/home.ht
 
 ## Usage
 
-Check back later... Implementation in progress. 
+Work in progres...
+
+1. Configuration
+   1. Move ROM files into project library directory
+   2. Populate project working directory with library.json/txt files (both for now). See project test directory for samples.
+2. Run server/server.py
+3. In FCEUX File->Lua->New Lua Script Window and select the client/emulator_client_script.lua
+
+Note: All paths used in client Lua script are relative to script location.
 
 ## License
 

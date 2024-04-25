@@ -37,7 +37,7 @@ while True:
     try:
         waitForConnection()
         while True:
-            time.sleep(5)
+            time.sleep(10) # TODO: Replace with input detection for red button (keyboard mapped)
             while True:
                 random_select = random.choice(config_data['games'])
                 if random_select['id'] != prior_select:

@@ -41,8 +41,18 @@ function processMessage(data)
     emu.print("[-] INFO: Data received: " .. value)
     game_file = library_table[tostring(value)]
     emu.print("[-] INFO: Next game selected: [" .. value .. "] " .. game_file)
-    -- TODO: Save state
-    -- TODO: Load game file and savestate
+
+    game_path = library_dir .. "/" .. game_file
+
+    emu.print("[-] INFO: Saving current game")
+    current_save = savestate.create(2)
+    savestate.save(current_save)
+    savestate.persist(current_save)
+
+    emu.print("[-] INFO: Loading [" .. value .. "]")
+    emu.loadrom(game_path)
+    next_save = savestate.create(2)
+    savestate.load(next_save)
 end
 
 function pollOnFrame()
@@ -88,6 +98,14 @@ for line in cfile:lines() do
     library_table[game_id] = game_name
     emu.print("[-] INFO: Loaded: [" .. game_id .. "] " .. game_name)
 end
+
+-- Load default
+init_game_file = library_table["1"]
+emu.print("[-] INFO: Loading default game: [1] " .. init_game_file)
+init_game_path = library_dir .. "/" .. init_game_file
+emu.loadrom(init_game_path)
+init_save = savestate.create(1)
+savestate.load(init_save)
 
 -- Some odd expected failures as the emulator is starting up.
 -- Attempt to connect 10 times.
